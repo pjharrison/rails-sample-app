@@ -1,0 +1,48 @@
+<h1>Rails Sample App</h1>
+
+<h4><%= link_to 'Add A Job Listing', new_job_path %></h4>
+
+<h3>Job Search:</h3>
+<!-- Path is not correct.  new_job_path does not give an error, but after searching it creates a new record instead of running the search.  
+This is because the new.html.erb file is what creates new job listings. -->
+<% form_tag new_job_path, :method => 'get' do %>
+<label>Title:</label><br />
+<%= text_field_tag :title, params[:title], :id => 'title_field' %><br />
+
+<label>Location:</label><br />
+<%= text_field_tag :location, params[:location], :id => 'location_field' %><br />
+
+
+<label>Salary Min:</label>&nbsp;&nbsp;&nbsp;<label>Salary Max:</label><br />
+<%= text_field_tag :salMin, params[:salMin], :id => 'salMin_field', :size => 6 %>&nbsp;&nbsp;&nbsp;
+<%= text_field_tag :salMax, params[:salMax], :id => 'salMax_field', :size => 6 %>
+<br /><br />
+<%= submit_tag "Search", :name => nil %> 
+<% end %> 
+
+
+<br /><br />
+<p>Just for my view, once search is working below will be removed:</p>
+<table>
+  <tr>
+    <th>Company</th>
+    <th>Title</th>
+    <th>Salary</th>
+    <th>Location</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @jobs.each do |job| %>
+  <tr>
+    <td><%= job.company %></td>
+    <td><%= job.title %></td>
+    <td><%= job.salary %></td>
+    <td><%= job.location %></td>
+    <td><%= job.description %></td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Show', job %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,4 +1,19 @@
 RailsSampleApp::Application.routes.draw do
+  
+  resources :users
+  
+  resources :jobs
+  
+  resources :sessions, :only => [:new, :create, :destroy]
+  match '/signup', :to => 'users#new'
+  match '/signin', :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
+  
+  #Not the path definition for the search, but not sure what is:
+  #match '/search', :to => 'jobs#search'
+  
+  get "jobs/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,31 @@
+<% form_for @job do |f| %>
+<p>
+User ID (enter 1 here):<br />
+<%= f.text_field :user_id %>
+</p>
+
+<p>
+Company Name:<br />
+<%= f.text_field :company %>
+</p>
+
+<p>
+Job Title:<br />
+<%= f.text_field :title %>
+</p>
+<p>
+Salary:<br />
+<%= f.text_field :salary %>
+</p>
+<p>
+Location:<br />
+<%= f.text_field :location %>
+</p>
+<p>
+Job Description:<br />
+<%= f.text_field :description %>
+</p>
+<p>
+<%= submit_tag %>
+</p>
+<% end %>

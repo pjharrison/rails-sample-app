@@ -1,0 +1,6 @@
+<ul>
+    <% @jobs.each do |job| %>
+  <li><%= link_to job.title, 
+    :action => 'show', :id => job.id  %></li>
+  <% end %>
+  </ul>
